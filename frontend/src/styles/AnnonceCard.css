@@ -1,0 +1,165 @@
+.acard-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(14, 26, 45, 0.75);
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  color: #c9a227;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.acard-fav-btn.active {
+  color: #ff6b8a;
+}
+
+.acard-match-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.match-tag,
+.acard-score {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.15);
+  color: #e8c547;
+}
+
+.acard {
+  background: var(--surface);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.acard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(18, 34, 52, 0.12);
+}
+
+.acard-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+  background: #ebe7df;
+}
+
+[data-theme="dark"] .acard-img-wrap {
+  background: #162637;
+}
+
+.acard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.acard:hover .acard-img {
+  transform: scale(1.05);
+}
+
+.acard-no-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 58px;
+  color: var(--primary);
+}
+
+[data-theme="dark"] .acard-no-img {
+  color: var(--accent);
+}
+
+.acard-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .acard-badge {
+  background: rgba(17, 31, 46, 0.94);
+  color: var(--accent);
+}
+
+.acard-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.acard-titre {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.acard-ville {
+  font-size: 14px;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.acard-details {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.acard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.acard-prix {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+}
+
+[data-theme="dark"] .acard-prix {
+  color: var(--accent);
+}
+
+.acard-btn {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  transition: transform 0.25s ease;
+}
+
+.acard-btn:hover {
+  transform: translateY(-2px);
+}

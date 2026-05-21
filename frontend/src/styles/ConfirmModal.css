@@ -1,0 +1,68 @@
+.confirm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 18, 32, 0.72);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.confirm-modal-card {
+  background: linear-gradient(145deg, #0f1f35, #152a45);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 16px;
+  padding: 1.75rem;
+  max-width: 420px;
+  width: 100%;
+  color: #f5f0e6;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.confirm-modal-card h3 {
+  margin: 0 0 0.75rem;
+  color: #c9a227;
+  font-size: 1.25rem;
+}
+
+.confirm-modal-card p {
+  margin: 0 0 1.5rem;
+  line-height: 1.55;
+  color: rgba(245, 240, 230, 0.88);
+}
+
+.confirm-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.confirm-modal-actions .gold-btn,
+.confirm-modal-actions .outline-btn,
+.confirm-modal-actions .danger-btn {
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.confirm-modal-actions .gold-btn {
+  background: linear-gradient(135deg, #c9a227, #e8c547);
+  color: #0f1f35;
+}
+
+.confirm-modal-actions .outline-btn {
+  background: transparent;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  color: #f5f0e6;
+}
+
+.confirm-modal-actions .danger-btn {
+  background: #b33a3a;
+  color: #fff;
+}

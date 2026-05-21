@@ -1,0 +1,458 @@
+.admin-page-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.admin-toolbar {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.admin-toolbar-left,
+.admin-toolbar-right {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.admin-input,
+.admin-select {
+  border: 1px solid #e5e9f2;
+  background: #f8fafe;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 220px;
+  font-size: 14px;
+  outline: none;
+  color: #24324a;
+}
+
+.admin-input:focus,
+.admin-select:focus {
+  border-color: #c89c3d;
+  box-shadow: 0 0 0 4px rgba(200, 156, 61, 0.12);
+}
+
+.admin-primary-btn,
+.admin-secondary-btn,
+.admin-danger-btn,
+.admin-tag-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+  font-size: 14px;
+}
+
+.admin-primary-btn {
+  background: #c89c3d;
+  color: white;
+}
+
+.admin-secondary-btn {
+  background: #eef3fb;
+  color: #24324a;
+}
+
+.admin-danger-btn {
+  background: #fff0f0;
+  color: #c43d3d;
+}
+
+.admin-tag-btn {
+  background: #f4f6fb;
+  color: #34435e;
+}
+
+.admin-primary-btn:hover,
+.admin-secondary-btn:hover,
+.admin-danger-btn:hover,
+.admin-tag-btn:hover {
+  transform: translateY(-1px);
+}
+
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.admin-kpi-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.admin-kpi-card h3 {
+  font-size: 14px;
+  color: #758196;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.admin-kpi-card p {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2b46;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.admin-card-title {
+  font-size: 20px;
+  color: #24324a;
+  margin-bottom: 16px;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid #eef1f6;
+  font-size: 14px;
+}
+
+.admin-table th {
+  color: #6f7b8f;
+  font-weight: 700;
+}
+
+.admin-table td {
+  color: #24324a;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-active {
+  background: #ecf9f1;
+  color: #23955a;
+}
+
+.status-pending {
+  background: #fff7e8;
+  color: #c68a1d;
+}
+
+.status-blocked {
+  background: #fff0f0;
+  color: #c43d3d;
+}
+
+.status-published {
+  background: #ecf9f1;
+  color: #23955a;
+}
+
+.status-hidden {
+  background: #eef3fb;
+  color: #4b5d7a;
+}
+
+.status-report {
+  background: #fff0f0;
+  color: #c43d3d;
+}
+
+.activity-list-admin {
+  display: grid;
+  gap: 14px;
+}
+
+.activity-row-admin {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f8fafe;
+}
+
+.activity-row-admin strong {
+  color: #24324a;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.activity-row-admin p {
+  color: #6f7b8f;
+  font-size: 14px;
+}
+
+.activity-row-admin span {
+  color: #8a94a6;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.chart-placeholder {
+  height: 320px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f8fafe, #ffffff);
+  border: 1px solid #eef1f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7d8797;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+}
+
+.logout-btn {
+  width: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0.04);
+  text-align: left;
+}
+
+@media (max-width: 1100px) {
+  .admin-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-toolbar-left,
+  .admin-toolbar-right {
+    width: 100%;
+  }
+
+  .admin-input,
+  .admin-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .activity-row-admin {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.admin-card,
+.admin-kpi-card,
+.metric-tile,
+.donut-legend-item,
+.top-city-row {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-card:hover,
+.admin-kpi-card:hover,
+.metric-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+}
+
+/* Bar animation */
+.stats-bar {
+  width: 20px;
+  border-radius: 12px 12px 4px 4px;
+  transform-origin: bottom;
+  animation: barGrow 1s ease forwards !important;
+}
+
+@keyframes barRise {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Donut animation */
+.donut-chart-clean {
+  animation: donutRotateIn 1s ease forwards;
+}
+
+@keyframes donutRotateIn {
+  from {
+    transform: scale(0.75) rotate(-80deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Legend animation */
+.donut-legend-item {
+  opacity: 0;
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.donut-legend-item:nth-child(1) { animation-delay: 0.15s; }
+.donut-legend-item:nth-child(2) { animation-delay: 0.3s; }
+.donut-legend-item:nth-child(3) { animation-delay: 0.45s; }
+.donut-legend-item:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Top cities progress animation */
+.top-city-progress-fill {
+  animation: progressGrowPro 1.2s ease forwards;
+}
+
+@keyframes progressGrowPro {
+  from {
+    width: 0 !important;
+  }
+}
+
+/* KPI cards entrance */
+.admin-kpi-card {
+  animation: cardPop 0.7s ease both;
+}
+
+.admin-kpi-card:nth-child(1) { animation-delay: 0.1s; }
+.admin-kpi-card:nth-child(2) { animation-delay: 0.2s; }
+.admin-kpi-card:nth-child(3) { animation-delay: 0.3s; }
+.admin-kpi-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ===== Animations diagrammes ===== */
+
+/* Bar chart */
+.stats-bar {
+  transform-origin: bottom;
+  animation: barGrow 1s ease forwards;
+}
+
+.stats-bar-group:nth-child(1) .stats-bar { animation-delay: 0.1s; }
+.stats-bar-group:nth-child(2) .stats-bar { animation-delay: 0.2s; }
+.stats-bar-group:nth-child(3) .stats-bar { animation-delay: 0.3s; }
+.stats-bar-group:nth-child(4) .stats-bar { animation-delay: 0.4s; }
+.stats-bar-group:nth-child(5) .stats-bar { animation-delay: 0.5s; }
+.stats-bar-group:nth-child(6) .stats-bar { animation-delay: 0.6s; }
+
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Donut / pie */
+.donut-chart-clean {
+  animation: donutIn 1s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.donut-chart-clean:hover {
+  transform: scale(1.06) rotate(5deg);
+}
+
+@keyframes donutIn {
+  from {
+    transform: scale(0.75) rotate(-90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Legend */
+.donut-legend-item {
+  opacity: 0;
+  animation: legendIn 0.6s ease forwards;
+}
+
+.donut-legend-item:nth-child(1) { animation-delay: 0.2s; }
+.donut-legend-item:nth-child(2) { animation-delay: 0.35s; }
+.donut-legend-item:nth-child(3) { animation-delay: 0.5s; }
+.donut-legend-item:nth-child(4) { animation-delay: 0.65s; }
+
+@keyframes legendIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Top villes progress bars */
+.top-city-progress-fill {
+  animation: progressGrow 1.2s ease forwards;
+}
+
+@keyframes progressGrow {
+  from {
+    width: 0 !important;
+  }
+}

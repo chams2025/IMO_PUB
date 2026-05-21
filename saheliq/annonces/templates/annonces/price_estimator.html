@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Estimation prix immobilier</title>
+    <style>
+      :root { color-scheme: light; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#f6f7fb; margin:0; }
+      .wrap { max-width: 880px; margin: 40px auto; padding: 0 16px; }
+      .card { background:white; border:1px solid #e7e8ee; border-radius:16px; padding:20px; box-shadow: 0 6px 24px rgba(16,24,40,.06); }
+      h1 { margin: 0 0 8px; font-size: 22px; }
+      p.sub { margin:0 0 18px; color:#525866; }
+      form { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+      label { display:flex; flex-direction:column; gap:6px; font-size: 13px; color:#303544; }
+      input, select { padding:10px 12px; border-radius: 12px; border:1px solid #d7d9e3; outline:none; background:#fff; }
+      input:focus, select:focus { border-color:#6b7cff; box-shadow: 0 0 0 4px rgba(107,124,255,.15); }
+      .actions { grid-column: 1 / -1; display:flex; gap:10px; align-items:center; margin-top: 6px; }
+      button { padding: 10px 14px; border:0; border-radius: 12px; cursor:pointer; font-weight:600; }
+      button.primary { background:#1f3bff; color:#fff; }
+      button.secondary { background:#eef0ff; color:#1f3bff; }
+      .out { margin-top: 14px; padding: 14px; border-radius: 12px; background:#f6f7fb; border:1px dashed #d7d9e3; }
+      .row { display:flex; gap:12px; flex-wrap:wrap; }
+      .pill { display:inline-flex; gap:8px; align-items:center; padding: 8px 10px; border-radius: 999px; background:#fff; border:1px solid #e7e8ee; }
+      .muted { color:#525866; }
+      .err { color:#b42318; }
+      .ok { color:#067647; }
+      @media (max-width: 720px) { form { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Estimation du prix</h1>
+        <p class="sub">Remplis les infos, puis clique sur “Estimer”. Ça appelle l’API Django: <code>/api/estimate-price/</code>.</p>
+
+        <form id="f">
+          <label>
+            Ville
+            <input name="ville" placeholder="Ex: Alger" required />
+          </label>
+
+          <label>
+            Type de bien
+            <select name="type_bien" required>
+              <option value="" selected disabled>Choisir…</option>
+              <option value="Appartement">Appartement</option>
+              <option value="Maison">Maison</option>
+              <option value="Terrain">Terrain</option>
+              <option value="Studio">Studio</option>
+              <option value="Villa">Villa</option>
+            </select>
+          </label>
+
+          <label>
+            Superficie (m²)
+            <input name="superficie" type="number" min="1" step="0.1" placeholder="Ex: 85" required />
+          </label>
+
+          <label>
+            Nombre de pièces
+            <input name="nombre_pieces" type="number" min="1" step="1" placeholder="Ex: 3" required />
+          </label>
+
+          <div class="actions">
+            <button class="primary" type="submit">Estimer</button>
+            <button class="secondary" type="button" id="btnCheck">Vérifier mon prix</button>
+            <span id="status" class="muted"></span>
+          </div>
+        </form>
+
+        <div class="out" id="out" hidden></div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("f");
+      const out = document.getElementById("out");
+      const statusEl = document.getElementById("status");
+      const btnCheck = document.getElementById("btnCheck");
+
+      function setStatus(msg, kind) {
+        statusEl.textContent = msg || "";
+        statusEl.className = kind === "err" ? "err" : (kind === "ok" ? "ok" : "muted");
+      }
+
+      function showOut(html) {
+        out.hidden = false;
+        out.innerHTML = html;
+      }
+
+      function getPayload(extra = {}) {
+        const fd = new FormData(form);
+        const payload = Object.fromEntries(fd.entries());
+        return { ...payload, ...extra };
+      }
+
+      async function postJson(url, payload) {
+        const r = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          const msg = data?.error || "Erreur API";
+          throw new Error(msg);
+        }
+        return data;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        setStatus("Estimation en cours…");
+        out.hidden = true;
+
+        try {
+          const data = await postJson("/api/estimate-price/", getPayload());
+          const price = data.estimated_price;
+          showOut(`
+            <div class="row">
+              <div class="pill"><strong>Prix estimé</strong> <span class="muted">${price?.toLocaleString?.("fr-FR") ?? price} DZD</span></div>
+            </div>
+          `);
+          setStatus("OK", "ok");
+        } catch (err) {
+          showOut(`<div class="err"><strong>Erreur:</strong> ${String(err.message || err)}</div>`);
+          setStatus("Erreur", "err");
+        }
+      });
+
+      btnCheck.addEventListener("click", async () => {
+        const prix = prompt("Entre le prix que tu veux vérifier (DZD) :");
+        if (!prix) return;
+        setStatus("Vérification en cours…");
+        out.hidden = true;
+
+        try {
+          const data = await postJson("/api/check-price/", getPayload({ prix }));
+          const price = data.estimated_price;
+          const status = data.status;
+          const msg = data.message;
+          showOut(`
+            <div class="row">
+              <div class="pill"><strong>Prix saisi</strong> <span class="muted">${data.entered_price?.toLocaleString?.("fr-FR") ?? data.entered_price} DZD</span></div>
+              <div class="pill"><strong>Prix estimé</strong> <span class="muted">${price?.toLocaleString?.("fr-FR") ?? price} DZD</span></div>
+              <div class="pill"><strong>Écart</strong> <span class="muted">${data.difference_percent}%</span></div>
+              <div class="pill"><strong>Statut</strong> <span class="${status === "normal" ? "ok" : "err"}">${status}</span></div>
+            </div>
+            <div style="margin-top:10px" class="${status === "normal" ? "ok" : "err"}">${msg}</div>
+          `);
+          setStatus("OK", "ok");
+        } catch (err) {
+          showOut(`<div class="err"><strong>Erreur:</strong> ${String(err.message || err)}</div>`);
+          setStatus("Erreur", "err");
+        }
+      });
+    </script>
+  </body>
+</html>
+

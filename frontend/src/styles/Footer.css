@@ -1,0 +1,223 @@
+:root {
+  --navy-950: #09172d;
+  --navy-900: #0d2342;
+  --navy-800: #14345d;
+  --gold: #d4af73;
+  --gold-dark: #b88a45;
+  --text-light: rgba(255, 255, 255, 0.82);
+  --text-soft: rgba(255, 255, 255, 0.62);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 60px;
+  background:
+    radial-gradient(circle at top right, rgba(212, 175, 115, 0.2), transparent 20%),
+    linear-gradient(135deg, var(--navy-950) 0%, var(--navy-900) 45%, var(--navy-800) 100%);
+  box-shadow: var(--shadow);
+  color: white;
+}
+
+.footer::before,
+.footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.footer::before {
+  background:
+    linear-gradient(120deg, transparent 0%, transparent 55%, rgba(212, 175, 115, 0.16) 62%, transparent 68%),
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.08), transparent 11%);
+}
+
+.footer::after {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.12;
+}
+
+.footer-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 34px;
+  padding: 58px 54px 34px;
+  align-items: start;
+}
+
+.brand {
+  padding-right: 18px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.footer-logo {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.trouvez {
+  max-width: 340px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.footer-col h3 {
+  font-size: 1.02rem;
+  color: #f7e1b6;
+  margin: 0 0 18px;
+  letter-spacing: 0.02em;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: 0.22s ease;
+  line-height: 1.7;
+  display: inline-block;
+}
+
+.footer-col a:hover {
+  color: #f6ddb0;
+  transform: translateX(4px);
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f4d8a8;
+  transition: 0.25s ease;
+  font-size: 1rem;
+}
+
+.socials a:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: white;
+  transform: translateY(-3px);
+}
+
+.contact-list {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.contact-icon {
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 115, 0.16);
+  color: #f5d39a;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 22px 54px 30px;
+  color: var(--text-soft);
+  font-size: 0.93rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tablette */
+@media (max-width: 1100px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .brand {
+    padding-right: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 34px 22px 28px;
+  }
+
+  .brand {
+    padding-right: 0;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+
+  .trouvez {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .footer-bottom {
+    padding: 18px 22px 24px;
+    font-size: 0.88rem;
+  }
+}

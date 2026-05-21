@@ -1,0 +1,67 @@
+.admin-charts-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.charts-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.charts-kpi-card {
+  background: linear-gradient(145deg, rgba(21, 42, 69, 0.95), rgba(15, 31, 53, 0.9));
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+
+.charts-kpi-card small {
+  display: block;
+  color: rgba(245, 240, 230, 0.7);
+  font-size: 0.72rem;
+  margin-bottom: 0.35rem;
+}
+
+.charts-kpi-card strong {
+  color: #e8c547;
+  font-size: 1.35rem;
+}
+
+.charts-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.charts-card {
+  background: rgba(21, 42, 69, 0.88);
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 14px;
+  padding: 1rem 1.1rem 0.5rem;
+}
+
+.charts-card h3 {
+  margin: 0 0 0.75rem;
+  color: #f5f0e6;
+  font-size: 1rem;
+}
+
+.charts-empty,
+.charts-state {
+  color: rgba(245, 240, 230, 0.75);
+  padding: 2rem;
+  text-align: center;
+}
+
+.charts-error {
+  color: #ffb4b4;
+  background: rgba(179, 58, 58, 0.15);
+  border-radius: 10px;
+  border: 1px solid rgba(179, 58, 58, 0.35);
+}
+
+[dir="rtl"] .charts-kpi-card {
+  text-align: right;
+}
